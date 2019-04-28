@@ -5,7 +5,7 @@ import java.util.Random;
 public class RockMusic
 {
    private String rockAlbum = null;
-   final int ROCK_ALBUMS = 300;  //Number of rock albums
+   final int ROCK_ALBUMS = 335;  //Number of rock albums
    private int num;              //Line number the file is stopped at
    
    public String getAlbum()
