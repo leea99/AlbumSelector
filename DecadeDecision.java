@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.Scanner;
-import java.util.Random;
 
 public class DecadeDecision
 {
    private String album = "";
    private String decade;
    private int albumNum;
+   
    
    public void decadeSelection()
    {
@@ -40,37 +40,30 @@ public class DecadeDecision
    public void decadeAlbum(String decade)
    {
       RockMusic rock = new RockMusic();
-      Random rand = new Random();
       
       while (decade.equals("1960s") && !album.contains("(196"))
       {
-         albumNum = rand.nextInt(300)+1;
-         album = rock.getAlbum(albumNum);
+         album = rock.getAlbum();
       }
       while (decade.equals("1970s") && !album.contains("(197"))
       {
-         albumNum = rand.nextInt(300)+1;
-         album = rock.getAlbum(albumNum);
+         album = rock.getAlbum();
       }
       while (decade.equals("1980s") && !album.contains("(198"))
       {
-         albumNum = rand.nextInt(300)+1;
-         album = rock.getAlbum(albumNum);
+         album = rock.getAlbum();
       }
       while (decade.equals("1990s") && !album.contains("(199"))
       {
-         albumNum = rand.nextInt(300)+1;
-         album = rock.getAlbum(albumNum);
+         album = rock.getAlbum();
       }
       while (decade.equals("2000s") && !album.contains("200"))
       {
-         albumNum = rand.nextInt(300)+1;
-         album = rock.getAlbum(albumNum);
+         album = rock.getAlbum();
       }
       while (decade.equals("2010s") && !album.contains("(201"))
       {
-         albumNum = rand.nextInt(300)+1;
-         album = rock.getAlbum(albumNum);
+         album = rock.getAlbum();
       }
    }
    
