@@ -8,81 +8,35 @@ public class AlbumSelector
    {  
       String album = "";
       String userChoice;
-      String genre;
-      String decade;
-      int albumNum;
+      final int rockAlbums = 300;
       
-      RockMusic rock = new RockMusic();
+      GenreDecision genre = new GenreDecision();
+      DecadeDecision decade = new DecadeDecision();
       
       Scanner keyboard = new Scanner(System.in);
       System.out.println("Would like you an album by genre or decade?");
       userChoice = keyboard.nextLine();
+      while(!userChoice.equals("genre") && !userChoice.equals("decade"))
+      {
+         System.out.println("Please enter either decade or genre.");   
+         userChoice = keyboard.nextLine();
+      }
+      userChoice = userChoice.toLowerCase();
       
-      Random rand = new Random();
-      if (userChoice.equals("genre")) 
+      
+      if (userChoice.equals("genre")) //Responsible for album selection if the user wants an album from a genre
          {
-            System.out.println("Which genre would you like? Currently only rock");
-            genre = keyboard.nextLine();
-            albumNum = rand.nextInt(300)+1;
-            album = rock.getAlbum(albumNum);
+            genre.genreSelection();      //Gets a specific genre from the user
+            album = genre.albumReturn(); //Returns the selected album to be outputed
          }
          
-      if (userChoice.equals("decade"))//Eventually move to another method 
+      if (userChoice.equals("decade")) //Responsible for album selection if the user wants an album from a decade
          {
-            System.out.println("Which decade would you like? Ex: (Type '1990s' for the 90s)");
-            decade = keyboard.nextLine();
-                       
-            //Input validation for the decade question
-            while (!decade.equals("1960s") && !decade.equals("1970s") && !decade.equals("1980s") && !decade.equals("1990s") && !decade.equals("2000s") && !decade.equals("2010s"))
-            {
-               //Common typo suggestions
-               if (decade.equals("1960") || decade.equals("1970") || decade.equals("1980") || decade.equals("1990") || decade.equals("2000") || decade.equals("2010"))
-               {
-                  System.out.println("Incorrect formating: add an s at the end of input. Ex: (1990s for the 90s)");
-               }
-               else if (decade.equals("60s") || decade.equals("70s") || decade.equals("80s") || decade.equals("90s") || decade.equals("00s") || decade.equals("10s"))
-               {
-                  System.out.println("Please type the whole year. Ex: (1990s for the 90s)");
-               }
-               else
-               {
-                  System.out.println("Not a valid input or an unsupported decade");
-               }
-               decade = keyboard.nextLine();
-            }
-            //Selects album from specific decade
-            while (decade.equals("1960s") && !album.contains("(196"))
-            {
-               albumNum = rand.nextInt(300)+1;
-               album = rock.getAlbum(albumNum);
-            }
-            while (decade.equals("1970s") && !album.contains("(197"))
-            {
-               albumNum = rand.nextInt(300)+1;
-               album = rock.getAlbum(albumNum);
-            }
-            while (decade.equals("1980s") && !album.contains("(198"))
-            {
-               albumNum = rand.nextInt(300)+1;
-               album = rock.getAlbum(albumNum);
-            }
-            while (decade.equals("1990s") && !album.contains("(199"))
-            {
-               albumNum = rand.nextInt(300)+1;
-               album = rock.getAlbum(albumNum);
-            }
-            while (decade.equals("2000s") && !album.contains("200"))
-            {
-               albumNum = rand.nextInt(300)+1;
-               album = rock.getAlbum(albumNum);
-            }
-            while (decade.equals("2010s") && !album.contains("(201"))
-            {
-               albumNum = rand.nextInt(300)+1;
-               album = rock.getAlbum(albumNum);
-            }
+            decade.decadeSelection();     //Gets a specific decade from the user
+            album = decade.albumReturn(); //Returns the selected album to be outputed
          }
          
-      System.out.println(album);
+      System.out.println("Listen to: " + album);
+      keyboard.close();
    }
 }
