@@ -1,12 +1,18 @@
 import java.io.*;
 import java.util.Scanner;
+import java.util.Random;
 
 public class RockMusic
 {
-   String rockAlbum = null;
-   public String getAlbum(int num)
+   private String rockAlbum = null;
+   final int ROCK_ALBUMS = 300;  //Number of rock albums
+   private int num;              //Line number the file is stopped at
+   
+   public String getAlbum()
    {
-      File file = new File("rMusic.txt");                   
+      File file = new File("rMusic.txt");
+      Random rand = new Random();
+      num = rand.nextInt(ROCK_ALBUMS)+1;                   
       
       try
       {
