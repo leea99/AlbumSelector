@@ -8,7 +8,6 @@ public class AlbumSelector
    {  
       String album = "";
       String userChoice;
-      final int rockAlbums = 300;
       
       GenreDecision genre = new GenreDecision();
       DecadeDecision decade = new DecadeDecision();
